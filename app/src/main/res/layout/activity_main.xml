@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.MainActivity">
+
+    <com.qmuiteam.qmui.widget.QMUITopBar
+        android:id="@+id/tb_main"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/qmui_topbar_height"
+        android:layout_alignParentTop="true"
+        app:layout_constraintTop_toTopOf="parent"
+        app:qmui_topbar_bg_color="@color/app_color_blue_2"
+        app:qmui_topbar_need_separator="false"
+        app:qmui_topbar_title_color="@color/qmui_config_color_white" />
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/vp_main"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/ctl_main"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tb_main" />
+
+    <com.flyco.tablayout.CommonTabLayout
+        android:id="@+id/ctl_main"
+        android:layout_width="0dp"
+        android:layout_height="54dp"
+        android:background="#ffffff"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:tl_iconHeight="23dp"
+        app:tl_iconWidth="23dp"
+        app:tl_indicator_color="@color/app_color_blue_2"
+        app:tl_indicator_height="0dp"
+        app:tl_textSelectColor="@color/app_color_blue_2"
+        app:tl_textUnselectColor="#66000000"
+        app:tl_textsize="12sp"
+        app:tl_underline_color="#ffffff"
+        app:tl_underline_height="1dp" />
+
+    <ImageButton
+        android:id="@+id/tab_main_center"
+        android:layout_width="65dp"
+        android:layout_height="65dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/tab_main_center"
+        android:contentDescription="@string/image"
+        android:transitionName="tabMainCenterTransition"
+        app:layout_constraintBottom_toTopOf="@id/ctl_main"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ctl_main" />
+
+    <!--    替代方案  -->
+    <!--    <com.github.clans.fab.FloatingActionButton-->
+    <!--        android:id="@+id/tab_main_center"-->
+    <!--        app:layout_constraintTop_toBottomOf="@id/ctl_main"-->
+    <!--        app:layout_constraintBottom_toTopOf="@id/ctl_main"-->
+    <!--        app:layout_constraintLeft_toLeftOf="parent"-->
+    <!--        android:transitionName="tabMainCenterTransition"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        app:layout_constraintRight_toRightOf="parent"-->
+    <!--        android:layout_marginBottom="18dp"-->
+    <!--        android:src="@mipmap/fab_add"-->
+    <!--        app:fab_shadowRadius="4dp"-->
+    <!--        app:fab_colorNormal="@color/app_color_blue_2"-->
+    <!--        app:fab_colorPressed="@color/app_color_blue_2"-->
+    <!--        app:fab_colorRipple="#99FFFFFF"/>-->
+
+</androidx.constraintlayout.widget.ConstraintLayout>

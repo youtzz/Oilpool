@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="tb_main_left_menu_btn_img" type="id"/>
+    <item name="tb_main_right_notify_btn_img" type="id"/>
+    <item name="tb_main_right_search_btn_img" type="id" />
+    <item name="tb_data_adds_right_publish_btn_img" type="id"/>
+</resources>

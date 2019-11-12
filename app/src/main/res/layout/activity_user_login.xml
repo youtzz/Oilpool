@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/bg_user_login"
+    android:fitsSystemWindows="true"
+    tools:context=".ui.userLogin.UserLoginActivity">
+
+    <TextView
+        android:id="@+id/tv_user_login_logo"
+        fontPath="fonts/helveticaneueultlt.otf"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/oil_pool"
+        android:textColor="@color/qmui_config_color_white"
+        android:textSize="80sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@id/guideline3"
+        tools:fontFamily="@font/helveticaneueultlt"
+        tools:ignore="MissingPrefix" />
+
+    <LinearLayout
+        android:id="@+id/qmuiLayout_user_login_container"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="35dp"
+        android:layout_marginRight="35dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_user_login_logo"
+        app:layout_constraintVertical_bias="0.134">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#7f3d71dd"
+            android:textColorHint="@android:color/white"
+            android:theme="@style/MaterialEditText"
+            app:hintEnabled="false">
+
+            <EditText
+                android:id="@+id/et_user_login_user_name"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:background="@null"
+                android:hint="@string/enter_user_name"
+                android:importantForAutofill="no"
+                android:inputType="text"
+                android:padding="5dp"
+                android:textAlignment="center"
+                android:textColor="@android:color/white"
+                android:textColorHint="@android:color/white"
+                android:textCursorDrawable="@drawable/login_edittext" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="#bd3d71dd" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#7f3d71dd"
+            android:textColorHint="@android:color/white"
+            android:theme="@style/MaterialEditText"
+            app:hintEnabled="false">
+
+            <EditText
+                android:id="@+id/et_user_login_user_psw"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:background="@null"
+                android:hint="@string/enter_password"
+                android:importantForAutofill="no"
+                android:inputType="textPassword"
+                android:padding="5dp"
+                android:textAlignment="center"
+                android:textColor="@android:color/white"
+                android:textColorHint="@android:color/white"
+                android:textCursorDrawable="@drawable/login_edittext" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_user_login_enter"
+            style="@style/MaterialButton"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:gravity="center"
+            android:text="@string/login"
+            android:textColor="@color/qmui_config_color_white"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/tv_user_login_sign_in"
+            android:textColor="@android:color/white"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="No account yet? Create one"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.15" />
+</androidx.constraintlayout.widget.ConstraintLayout>

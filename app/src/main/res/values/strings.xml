@@ -1,0 +1,64 @@
+<resources>
+    <string name="app_name">oilpool</string>
+    <string name="title_first_name">自动数据</string>
+    <string name="title_second_name">人工数据</string>
+    <string name="title_third_name">我的</string>
+
+    <string name="overview_all_data">总数据</string>
+    <string name="overview_today_update">今日上传</string>
+    <string name="overview_error">异常</string>
+    <string name="overview_other">其他</string>
+
+    <string name="temperature">温度</string>
+    <string name="PH">PH</string>
+    <string name="add">添加</string>
+    <string name="add_u_data">添加您的数据</string>
+
+    <string name="search">搜索</string>
+    <string name="image">image</string>
+    <string name="empty_view">缺省页</string>
+    <string name="density">浓度</string>
+    <string name="conductivity">导电率</string>
+    <string name="conductivity_en">conductivity</string>
+    <string name="density_en">density</string>
+    <string name="conductivity_unit">us/cm</string>
+    <string name="density_unit">mol/L</string>
+
+    <!--  number  -->
+    <string name="_0">0</string>
+    <string name="_750">750</string>
+
+    <!--  system  -->
+    <string name="oil_pool">Oilpool</string>
+    <string name="delete">删除</string>
+    <string name="login">登录</string>
+    <string name="exit">退出</string>
+    <string name="password">密码</string>
+    <string name="confirm">确认</string>c
+    <string name="cancel">取消</string>
+    <string name="warming">警告</string>
+    <string name="unknown">未知</string>
+    <string name="safe">安全</string>
+    <string name="danger">危险</string>
+    <string name="i_kow">知道了</string>
+    <string name="ok">好的</string>
+    <string name="login_failed">登陆失败</string>
+    <string name="if_sure_to_exit_login">是否退出当前账号</string>
+    <string name="system_error">系统错误</string>
+    <string name="unknown_error">未知错误</string>
+    <string name="upload_success">上传成功</string>
+    <string name="upload_error">上传失败</string>
+    <string name="data_is_loading">数据加载中…</string>
+    <string name="data_loaded_error">加载失败，点击重试</string>
+    <string name="data_loaded_success">数据加载成功</string>
+    <string name="you_do_not_add_data">您未添加数据！</string>
+    <string name="please_wait">请等待</string>
+    <string name="data_is_uploading">数据上传中</string>
+    <string name="please_check_network_is_working" translatable="false">请检查网络是否正常开启</string>
+    <string name="inadequate_user_rights" translatable="false">用户权限不足</string>
+    <string name="sender" translatable="false">发送者</string>
+    <string name="enter_user_name" translatable="false">输入用户名</string>
+    <string name="enter_password" translatable="false">输入密码</string>
+    <string name="copy_right" translatable="false">Copyrights © %1$d</string>
+
+</resources>

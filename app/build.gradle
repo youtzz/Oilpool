@@ -1,0 +1,75 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 29
+    defaultConfig {
+        applicationId "org.shichuangnet.jojo.oilpool"
+        minSdkVersion 15
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        targetCompatibility = 1.8
+        sourceCompatibility = 1.8
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    testImplementation 'junit:junit:4.12'
+
+    //  导入本地model
+    implementation project(path: ':dashboardview')
+
+    /*--------------系统功能--------------*/
+    //  OKHttp 3.系列分支兼容安卓4.版本
+    //noinspection GradleDependency
+    implementation "com.squareup.okhttp3:okhttp:3.12.0"
+    //  okhttp封装库
+    implementation 'com.zhy:okhttputils:2.6.2'
+    //  自定义字体的简便实现方法
+    implementation 'io.github.inflationx:calligraphy3:3.1.1'
+    implementation 'io.github.inflationx:viewpump:2.0.3'
+    //  google官方图标库
+    implementation 'com.mikepenz:fontawesome-typeface:5.3.1.1@aar'
+
+
+    /*--------------UI相关--------------*/
+    //  沉浸式状态栏封装库
+    implementation 'com.jaeger.statusbarutil:library:1.5.1'
+    //  一个扩展tab库，用于实现底部菜单栏
+    implementation 'com.flyco.tablayout:FlycoTabLayout_Lib:2.1.2@aar'
+    //  QMUI库
+    implementation 'com.qmuiteam:qmui:1.4.0'
+    //  smartRefresh 下拉刷新、上拉加载库，原库过大，只导入部分
+    implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0'
+    //  浮动按钮
+    implementation 'com.github.clans:fab:1.6.4'
+    //  封装了一些常用功能的 recyclerView adapter
+    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.47'
+    //  实现滑动菜单，优于官方的navigationLayout
+    implementation "com.mikepenz:materialdrawer:6.1.2"
+    //  sweet-alert-dialog
+    implementation 'com.github.cazaea:sweet-alert-dialog:1.0.0'
+    //  可折叠展开的View
+    implementation 'com.ramotion.foldingcell:folding-cell:1.2.3'
+    //  图表
+    //  关于界面
+    implementation 'com.github.medyo:android-about-page:1.2.5'
+    //  彩蛋
+    implementation 'nl.dionsegijn:konfetti:1.1.3'
+    //  图表
+    implementation 'im.dacer:AndroidCharts:1.0.4'
+    implementation 'com.hrules:charter:1.5.1'
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
+}

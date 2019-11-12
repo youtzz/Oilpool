@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    tools:context=".ui.dataAdds.DataAddsActivity">
+
+    <com.qmuiteam.qmui.widget.QMUITopBar
+        android:id="@+id/tb_data_adds"
+        android:layout_width="0dp"
+        android:layout_height="?attr/qmui_topbar_height"
+        android:fitsSystemWindows="true"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:qmui_topbar_bg_color="@color/app_color_blue_2"
+        app:qmui_topbar_need_separator="false"
+        app:qmui_topbar_title_color="@color/qmui_config_color_white" />
+
+    <!-- 用高版本api，暂时不知道低版本安卓会不会报错   -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_data_adds_content"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:transitionName="tabMainCenterTransition"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tb_data_adds" />
+
+    <com.github.clans.fab.FloatingActionButton
+        android:id="@+id/fab_data_adds"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="12dp"
+        android:layout_marginRight="12dp"
+        android:layout_marginBottom="18dp"
+        android:src="@mipmap/fab_add"
+        app:fab_colorNormal="@color/app_color_blue_2"
+        app:fab_colorPressed="@color/app_color_blue_2"
+        app:fab_colorRipple="#99FFFFFF"
+        app:fab_shadowRadius="4dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

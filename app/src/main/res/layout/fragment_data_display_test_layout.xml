@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    tools:context=".ui.dataDisplay.DataDisplayFragment">
+
+    <FrameLayout
+        android:background="@android:color/white"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:background="@color/app_color_blue_2" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <!-- fillViewPort允许nestedScrollview中的子布局去填充满自己 -->
+
+            <!--  搜索栏  搜索栏取消了，集成到了topBar中  -->
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.50121653" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cv_tmp_value_container"
+                android:layout_width="0dp"
+                android:layout_height="105dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="14dp"
+                android:layout_marginEnd="6dp"
+                android:layout_marginRight="6dp"
+                android:foreground="?android:selectableItemBackground"
+                app:cardBackgroundColor="@color/qmui_config_color_white"
+                app:cardCornerRadius="6dp"
+                app:cardElevation="5dp"
+                app:cardPreventCornerOverlap="false"
+                app:cardUseCompatPadding="true"
+                app:layout_constraintEnd_toStartOf="@id/guideline"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <View
+                        android:id="@+id/v_tmp"
+                        android:layout_width="20dp"
+                        android:layout_height="wrap_content"
+                        android:background="@color/overview_blue"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tv_tmp_title"
+                        fontPath="fonts/opensanslight.ttf"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginLeft="14dp"
+                        android:layout_marginTop="8dp"
+                        android:fontFamily="@font/opensanslight"
+                        android:text="@string/overview_today_update"
+                        android:textColor="@color/overview_gray_1"
+                        android:textSize="20sp"
+                        app:layout_constraintLeft_toRightOf="@id/v_tmp"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:ignore="MissingPrefix"
+                        tools:targetApi="jelly_bean" />
+
+                    <TextView
+                        android:id="@+id/tv_tmp_value"
+                        fontPath="fonts/opensanslight.ttf"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/opensanslight"
+                        android:text="@string/_0"
+                        android:textColor="@color/overview_gray_1"
+                        android:textSize="35sp"
+                        app:layout_constraintLeft_toLeftOf="@id/tv_tmp_title"
+                        app:layout_constraintTop_toBottomOf="@id/tv_tmp_title"
+                        tools:ignore="MissingPrefix"
+                        tools:targetApi="jelly_bean" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cv_ph_value_container"
+                android:layout_width="0dp"
+                android:layout_height="105dp"
+                android:layout_marginStart="6dp"
+                android:layout_marginLeft="6dp"
+                android:layout_marginTop="14dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginRight="16dp"
+                android:foreground="?android:selectableItemBackground"
+                app:cardBackgroundColor="@color/qmui_config_color_white"
+                app:cardCornerRadius="6dp"
+                app:cardElevation="5dp"
+                app:cardPreventCornerOverlap="false"
+                app:cardUseCompatPadding="true"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@id/guideline"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <View
+                        android:id="@+id/v_ph"
+                        android:layout_width="20dp"
+                        android:layout_height="wrap_content"
+                        android:background="@color/overview_blue"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tv_ph_title"
+                        fontPath="fonts/opensanslight.ttf"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginLeft="14dp"
+                        android:layout_marginTop="8dp"
+                        android:fontFamily="@font/opensanslight"
+                        android:text="@string/overview_all_data"
+                        android:textColor="@color/overview_gray_1"
+                        android:textSize="20sp"
+                        app:layout_constraintLeft_toRightOf="@id/v_ph"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:ignore="MissingPrefix"
+                        tools:targetApi="jelly_bean" />
+
+                    <TextView
+                        android:id="@+id/tv_ph_value"
+                        fontPath="fonts/opensanslight.ttf"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/opensanslight"
+                        android:text="0"
+                        android:textColor="@color/overview_gray_1"
+                        android:textSize="35sp"
+                        app:layout_constraintLeft_toLeftOf="@id/tv_ph_title"
+                        app:layout_constraintTop_toBottomOf="@id/tv_ph_title"
+                        tools:ignore="MissingPrefix"
+                        tools:targetApi="jelly_bean"
+                        tools:text="@string/_750" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+
+
+            <!--  数据列表，默认状态是隐藏的  -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cv_container_data_display_data_list"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="130dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginBottom="5dp"
+                android:visibility="gone"
+                app:cardBackgroundColor="#00fafafa"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="0dp"
+                app:cardPreventCornerOverlap="false"
+                app:cardUseCompatPadding="true"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <com.scwang.smartrefresh.layout.SmartRefreshLayout
+                    android:id="@+id/refresh_layout_data_display"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:layout_constraintTop_toBottomOf="@id/cv_container_data_display_data_list"
+                    app:srlAccentColor="@color/qmui_config_color_gray_7"
+                    app:srlDisableContentWhenLoading="false"
+                    app:srlEnableNestedScrolling="true"
+                    app:srlEnablePreviewInEditMode="true"
+                    app:srlPrimaryColor="@android:color/transparent">
+                    <!--srlAccentColor srlPrimaryColor 将会改变 Header 和 Footer 的主题颜色-->
+                    <!--srlEnablePreviewInEditMode 可以开启和关闭预览功能-->
+                    <com.scwang.smartrefresh.layout.header.ClassicsHeader
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:srlClassicsSpinnerStyle="FixedBehind"
+                        app:srlDrawableArrowSize="20dp"
+                        app:srlDrawableMarginRight="20dp"
+                        app:srlDrawableProgress="@drawable/ic_progress_puzzle"
+                        app:srlDrawableProgressSize="20dp"
+                        app:srlEnableLastTime="true"
+                        app:srlFinishDuration="500"
+                        app:srlPrimaryColor="@color/qmui_config_color_white"
+                        app:srlTextSizeTime="10dp"
+                        app:srlTextSizeTitle="16sp"
+                        app:srlTextTimeMarginTop="2dp" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rv_data_display"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:clipChildren="false"
+                        android:clipToPadding="false"
+                        android:descendantFocusability="blocksDescendants" />
+
+                    <com.scwang.smartrefresh.layout.footer.ClassicsFooter
+                        android:id="@+id/refresh_footer_data_display"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:srlAccentColor="@color/qmui_config_color_gray_7"
+                        app:srlPrimaryColor="#fafafa" />
+                </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <!--  空白页，默认状态是显示的  -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cv_container_data_display_empty_view"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginBottom="5dp"
+                app:cardBackgroundColor="#fafafa"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="0dp"
+                app:cardPreventCornerOverlap="false"
+                app:cardUseCompatPadding="true"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/cv_ph_value_container">
+
+                <ImageButton
+                    android:id="@+id/ib_data_display_empty"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:contentDescription="@string/empty_view"
+                    android:scaleType="centerCrop"
+                    android:src="@mipmap/bg_empty_view_data_display" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="-6dp"
+                    android:layout_marginLeft="-6dp"
+                    android:layout_marginTop="90dp"
+                    android:orientation="horizontal">
+
+                    <ProgressBar
+                        android:id="@+id/pb_data_display_empty"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent" />
+
+                    <TextView
+                        android:id="@+id/tv_data_display_empty_refresh_state"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/data_is_loading" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </FrameLayout>
+</androidx.core.widget.NestedScrollView>

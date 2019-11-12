@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+
+    <!-- common -->
+    <color name="app_color_blue">#00A8E1</color>
+    <color name="app_color_blue_disabled">#8000A8E1</color>
+    <color name="app_color_blue_pressed">#c000A8E1</color>
+
+    <color name="app_color_blue_2">#31BDF3</color>
+    <color name="app_color_blue_2_disabled">#7F31BDF3</color>
+    <color name="app_color_blue_2_pressed">#7F31BDF3</color>
+
+    <color name="app_color_theme_1">#EF5362</color> <!-- Grapefruit -->
+    <color name="app_color_theme_2">#FE6D4B</color> <!-- Bittersweet -->
+    <color name="app_color_theme_3">#FFCF47</color> <!-- Sunflower -->
+    <color name="app_color_theme_4">#9FD661</color> <!-- Grass -->
+    <color name="app_color_theme_5">#3FD0AD</color> <!-- Mint -->
+    <color name="app_color_theme_6">#2BBDF3</color> <!-- Aqua -->
+    <color name="app_color_theme_7">#5A9AEF</color> <!-- Blue Jeans -->
+    <color name="app_color_theme_8">#AC8FEF</color> <!-- Lavender -->
+    <color name="app_color_theme_9">#EE85C1</color> <!-- Pink Rose -->
+
+    <color name="app_color_description">@color/qmui_config_color_gray_5</color>
+
+    <color name="bar_divider">#D4D6D8</color>
+    <color name="tab_panel_bg">#ffffff</color>
+    <color name="tab_panel_divider">@color/bar_divider</color>
+
+    <!-- Components 组件 -->
+    <color name="radiusImageView_border_color">@color/app_color_theme_2</color>
+    <color name="radiusImageView_selected_border_color">@color/app_color_theme_1</color>
+    <color name="radiusImageView_selected_mask_color">#7FEF5362</color>
+
+    <!-- Helper 系列界面 -->
+
+    <!-- ColorHelper 颜色工具 -->
+    <color name="colorHelper_square_alpha_background">@color/app_color_theme_4</color>
+    <color name="colorHelper_square_from_ratio_background">@color/app_color_blue</color>
+    <color name="colorHelper_square_to_ratio_background">@color/app_color_theme_3</color>
+
+    <color name="overview_green">#32CC7F</color>
+    <color name="overview_blue">#57c8f2</color>
+    <color name="overview_yellow">#f8d347</color>
+    <color name="overview_red">#e34551</color>
+    <color name="overview_gray_1">#b0b4b7</color>
+    <color name="overview_gray_2">#75747d</color>
+    
+    <color name="navigation_bar_color_white">#ffffff</color>
+
+    <color name="bgBackSideColor">#f4f0ff</color>
+    <color name="bgTitleLeft">#594691</color>
+    <color name="bgTitleRight">#ffffff</color>
+    <color name="bgContentTop">#594691</color>
+    <color name="bgContent">#ffffff</color>
+    <color name="contentDividerLine">#e0e0e0</color>
+    <color name="contentBadgeTitle">#a9a9a9</color>
+    <color name="titleBadgeTitle">#adafb1</color>
+    <color name="titleBadgeText">#adafb1</color>
+    <color name="mainTextColor">#343d43</color>
+    <color name="btnRequest">#ffbf12</color>
+
+    <!-- Light UI colors -->
+    <color name="lt_yellow">#fce18a</color>
+    <color name="lt_orange">#ff726d</color>
+    <color name="lt_purple">#b48def</color>
+    <color name="lt_pink">#f4306d</color>
+
+    <color name="black_overlay">#66000000</color>
+</resources>

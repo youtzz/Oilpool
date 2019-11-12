@@ -1,0 +1,633 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.ramotion.foldingcell.FoldingCell xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/folding_cell"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="10dp"
+    app:animationDuration="1300"
+    app:backSideColor="@color/bgBackSideColor"
+    app:cameraHeight="30">
+
+    <!--  折叠展开内容区域  -->
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:cardCornerRadius="5dp"
+        app:cardElevation="1dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- content header line -->
+            <RelativeLayout
+                android:id="@+id/rl_data_display_item_fold_title_bg"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/red_btn_bg_color"
+                android:paddingLeft="12dp"
+                android:paddingTop="7dp"
+                android:paddingRight="12dp"
+                android:paddingBottom="7dp">
+
+                <!-- 中心部分显示数据ID,不需要，暂时隐藏了 -->
+                <!--<TextView
+                    android:id="@+id/tv_data_display_item_fold_data_id"
+                    android:visibility="visible"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:textSize="20sp"
+                    android:textColor="@android:color/white"
+                    tools:text="#1234-5678"/>-->
+
+                <TextView
+                    android:id="@+id/tv_data_display_item_fold_data_number"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:textColor="@android:color/white"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    tools:text="NO.1" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:src="@mipmap/ic_left_menu" />
+
+            </RelativeLayout>
+
+            <!-- content header image 这里面暂时不知道放什么 -->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/head_image"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/head_image" />
+
+               <!-- <TextView
+                    android:id="@+id/head_image_left_text"
+                    style="@style/ContentImageBadgeText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignStart="@id/head_image"
+                    android:layout_alignLeft="@id/head_image"
+                    android:layout_alignBottom="@id/head_image"
+                    android:paddingStart="20dp"
+                    android:paddingLeft="20dp"
+                    android:paddingBottom="10dp"
+                    tools:text="5" />
+
+                <TextView
+                    style="@style/ContentImageBadgeTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_above="@id/head_image_left_text"
+                    android:layout_alignStart="@id/head_image_left_text"
+                    android:layout_alignLeft="@id/head_image_left_text"
+                    android:paddingStart="20dp"
+                    android:paddingLeft="20dp"
+                    tools:text="s" />
+
+                <TextView
+                    android:id="@+id/head_image_right_text"
+                    style="@style/ContentImageBadgeText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignEnd="@id/head_image"
+                    android:layout_alignRight="@id/head_image"
+                    android:layout_alignBottom="@id/head_image"
+                    android:paddingEnd="20dp"
+                    android:paddingRight="20dp"
+                    android:paddingBottom="10dp"
+                    tools:text="ss" />
+
+                <TextView
+                    style="@style/ContentImageBadgeTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_above="@id/head_image_right_text"
+                    android:layout_alignStart="@id/head_image_right_text"
+                    android:layout_alignLeft="@id/head_image_right_text"
+                    tools:text="sss" />
+
+                <TextView
+                    android:id="@+id/head_image_center_text"
+                    style="@style/ContentImageBadgeText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@id/head_image"
+                    android:layout_centerHorizontal="true"
+                    android:paddingBottom="10dp"
+                    tools:text="sss" />
+
+                <TextView
+                    style="@style/ContentImageBadgeTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_above="@id/head_image_center_text"
+                    android:layout_alignStart="@id/head_image_center_text"
+                    android:layout_alignLeft="@id/head_image_center_text"
+                    tools:text="123" />-->
+
+            </RelativeLayout>
+
+            <!-- content body layout -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/bgContent"
+                android:orientation="vertical"
+                android:paddingLeft="20dp"
+                android:paddingTop="9dp"
+                android:paddingRight="20dp"
+                android:paddingBottom="6dp">
+
+                <!-- avatar and name part 暂时不需要 -->
+                <!--<RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/content_avatar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentLeft="true"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/avatar" />
+
+                    <TextView
+                        android:id="@+id/content_avatar_title"
+                        style="@style/ContentMainBadgeTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginBottom="5dp"
+                        android:layout_toEndOf="@id/content_avatar"
+                        android:layout_toRightOf="@id/content_avatar"
+                        android:text="@string/sender" />
+
+                    <TextView
+                        android:id="@+id/content_name_view"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/content_avatar_title"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginBottom="2dp"
+                        android:layout_toEndOf="@id/content_avatar"
+                        android:layout_toRightOf="@id/content_avatar"
+                        android:text="@string/unknown"
+                        android:textColor="@color/mainTextColor"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/arrow" />
+
+                </RelativeLayout>-->
+
+                <!-- divider line -->
+                <!--<ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="9dp"
+                    android:layout_marginBottom="6dp"
+                    android:src="@color/contentDividerLine" />-->
+
+                <!-- content part 父容器的高度不是很准确 不知道在其他分辨率下会怎么样-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="185dp"
+                    android:baselineAligned="false"
+                    android:orientation="horizontal">
+
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1">
+
+                        <TextView
+                            android:id="@+id/content_from_badge"
+                            style="@style/ContentMainBadgeTitle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:layout_alignParentLeft="true"
+                            android:text="@string/conductivity_en" />
+
+                        <TextView
+                            android:id="@+id/content_from_address_1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/content_from_badge"
+                            android:layout_alignStart="@id/content_from_badge"
+                            android:layout_alignLeft="@id/content_from_badge"
+                            android:text="@string/conductivity"
+                            android:textColor="@color/mainTextColor"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/content_from_address_2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/content_from_address_1"
+                            android:layout_alignStart="@id/content_from_address_1"
+                            android:layout_alignLeft="@id/content_from_address_1"
+                            android:text="安全"
+                            android:textColor="@color/mainTextColor"
+                            android:textSize="14sp" />
+
+                        <org.shichuangnet.jojo.dashboardview.DashboardView
+                            android:id="@+id/dashboard_data_display_item_fold_conductivity"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/content_from_address_2"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginEnd="10dp"
+                            android:layout_marginRight="10dp"
+                            app:headerText="@string/conductivity_unit"
+                            app:max="200"
+                            app:min="0"
+                            app:section="8" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1">
+
+                        <TextView
+                            android:id="@+id/content_to_badge"
+                            style="@style/ContentMainBadgeTitle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:layout_alignParentLeft="true"
+                            android:text="@string/density_en" />
+
+                        <TextView
+                            android:id="@+id/content_to_address_1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/content_to_badge"
+                            android:layout_alignStart="@id/content_to_badge"
+                            android:layout_alignLeft="@id/content_to_badge"
+                            android:text="@string/density"
+                            android:textColor="@color/mainTextColor"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/content_to_address_2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/content_to_address_1"
+                            android:layout_alignStart="@id/content_to_address_1"
+                            android:layout_alignLeft="@id/content_to_address_1"
+                            android:text="@string/safe"
+                            android:textColor="@color/mainTextColor"
+                            android:textSize="14sp" />
+
+                        <org.shichuangnet.jojo.dashboardview.DashboardView
+                            android:id="@+id/dashboard_data_display_item_fold_density"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/content_to_address_2"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="10dp"
+                            app:headerText="@string/density_unit"
+                            app:max="400"
+                            app:min="0"
+                            app:section="8" />
+
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+                <!-- divider line -->
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="7dp"
+                    android:layout_marginBottom="6dp"
+                    android:src="@color/contentDividerLine" />
+
+                <!-- dates part -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:baselineAligned="false"
+                    android:orientation="horizontal"
+
+                    >
+
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1">
+
+                        <TextView
+                            android:id="@+id/content_delivery_date_badge"
+                            style="@style/ContentMainBadgeTitle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:layout_alignParentLeft="true"
+                            android:text="上传时间" />
+
+                        <TextView
+                            android:id="@+id/tv_data_display_item_fold_upload_time"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/content_delivery_date_badge"
+                            android:layout_alignStart="@id/content_delivery_date_badge"
+                            android:layout_alignLeft="@id/content_delivery_date_badge"
+                            android:textColor="@color/mainTextColor"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            tools:text="11:22:10" />
+
+                        <TextView
+                            android:id="@+id/tv_data_display_item_fold_upload_date"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/tv_data_display_item_fold_upload_time"
+                            android:layout_alignStart="@id/tv_data_display_item_fold_upload_time"
+                            android:layout_alignLeft="@id/tv_data_display_item_fold_upload_time"
+                            android:textColor="@color/mainTextColor"
+                            android:textSize="14sp"
+                            tools:text="2019-11-20" />
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:visibility="invisible">
+
+                        <TextView
+                            android:id="@+id/content_deadline_badge"
+                            style="@style/ContentMainBadgeTitle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:layout_alignParentLeft="true"
+                            android:text="fasfasf" />
+
+                        <TextView
+                            android:id="@+id/content_deadline_time"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/content_deadline_badge"
+                            android:layout_alignStart="@id/content_deadline_badge"
+                            android:layout_alignLeft="@id/content_deadline_badge"
+                            android:text="dasdasd"
+                            android:textColor="@color/mainTextColor"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/content_deadline_date"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/content_deadline_time"
+                            android:layout_alignStart="@id/content_deadline_time"
+                            android:layout_alignLeft="@id/content_deadline_time"
+                            android:text=""
+                            android:textColor="@color/mainTextColor"
+                            android:textSize="14sp" />
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+                <!-- delete button -->
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_data_display_item_fold_delete"
+                    style="@style/MaterialButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:padding="10dp"
+                    android:text="@string/delete"
+                    android:textAlignment="center"
+                    android:textColor="@android:color/white"
+                    android:textSize="20sp"
+                    android:theme="@style/MaterialButton"
+                    app:backgroundTint="@color/red_btn_bg_color" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="点击隐藏此面板"
+                    android:textAlignment="center"
+                    android:textColor="@color/contentBadgeTitle"
+                    android:textSize="12sp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <!--  折叠未展开标题区域 -->
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="visible"
+        app:cardCornerRadius="5dp"
+        app:cardElevation="0dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:baselineAligned="false"
+            android:orientation="horizontal">
+            <!--左边的容器-->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/view_left_vertical_decoration_bar"
+                android:layout_width="match_parent"
+                android:layout_height="155dp"
+                android:layout_weight="3"
+                android:background="@color/app_color_blue"
+                android:paddingTop="10dp"
+                android:paddingBottom="20dp">
+
+                <TextView
+                    android:id="@+id/tv_data_display_item_data_unfold_number"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/qmui_config_color_white"
+                    android:textSize="26sp"
+                    app:layout_constraintBottom_toBottomOf="@id/guideline4"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="NO.1" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintHorizontal_bias="0.536"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/guideline4"
+                    app:layout_constraintVertical_bias="1.0">
+
+                    <TextView
+                        android:id="@+id/tv_data_display_item_unfold_date"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/qmui_config_color_white"
+                        android:textSize="14sp"
+                        tools:text="today" />
+
+                    <TextView
+                        android:id="@+id/tv_data_display_item_unfold_time"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="0dp"
+
+                        android:textColor="@color/qmui_config_color_white"
+                        android:textSize="12sp"
+                        tools:text="11:10 PM" />
+                </LinearLayout>
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guideline4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintGuide_percent="0.5" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+            <!--右边的容器-->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/view_right_vertical_decoration_bar"
+                android:layout_width="match_parent"
+                android:layout_height="155dp"
+                android:layout_weight="1"
+                android:background="@android:color/white"
+                android:paddingStart="20dp"
+                android:paddingLeft="15dp"
+                android:paddingTop="10dp"
+                android:paddingEnd="20dp"
+                android:paddingRight="20dp"
+                android:paddingBottom="20dp">
+
+                <ImageView
+                    android:id="@+id/title_from_to_dots"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/image"
+                    android:src="@drawable/from_to_purple"
+                    app:layout_constraintBottom_toBottomOf="@id/guideline5"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tv_data_display_conductivity_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/conductivity"
+                    android:textSize="16sp"
+                    app:layout_constraintBottom_toTopOf="@id/divider"
+                    app:layout_constraintStart_toStartOf="@+id/divider"
+
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tv_data_display_conductivity_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="6dp"
+                    android:layout_marginLeft="6dp"
+                    android:text="@string/unknown"
+                    android:textSize="16sp"
+                    app:layout_constraintBottom_toTopOf="@id/divider"
+                    app:layout_constraintLeft_toRightOf="@id/tv_data_display_conductivity_title"
+
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <View
+                    android:id="@+id/divider"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:background="?android:attr/listDivider"
+                    app:layout_constraintBottom_toTopOf="@id/tv_data_display_density_title"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/title_from_to_dots"
+                    app:layout_constraintTop_toBottomOf="@id/tv_data_display_conductivity_title" />
+
+                <TextView
+                    android:id="@+id/tv_data_display_density_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/density"
+                    android:textSize="16sp"
+                    app:layout_constraintBottom_toBottomOf="@id/guideline5"
+                    app:layout_constraintStart_toStartOf="@+id/divider"
+                    app:layout_constraintTop_toBottomOf="@id/divider" />
+
+                <TextView
+                    android:id="@+id/tv_data_display_density_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="6dp"
+                    android:layout_marginLeft="6dp"
+                    android:text="@string/unknown"
+                    android:textSize="16sp"
+                    app:layout_constraintBottom_toTopOf="@id/guideline5"
+                    app:layout_constraintLeft_toRightOf="@id/tv_data_display_density_title"
+
+                    app:layout_constraintTop_toBottomOf="@id/divider" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guideline5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintGuide_percent="0.5" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="点击查看详细信息"
+                    android:textColor="@color/contentBadgeTitle"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</com.ramotion.foldingcell.FoldingCell>
