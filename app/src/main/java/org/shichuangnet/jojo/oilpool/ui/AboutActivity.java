@@ -6,14 +6,18 @@ import android.os.Build;
 import android.os.Bundle;
 import android.transition.Transition;
 import android.transition.TransitionInflater;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.Window;
 import android.widget.LinearLayout;
 
 import com.qmuiteam.qmui.widget.QMUITopBar;
+import com.zhy.http.okhttp.OkHttpUtils;
+import com.zhy.http.okhttp.callback.StringCallback;
 
 import org.shichuangnet.jojo.oilpool.R;
+import org.shichuangnet.jojo.oilpool.api.OilPoolApi;
 
 import java.util.Calendar;
 
@@ -22,6 +26,7 @@ import mehdi.sakout.aboutpage.Element;
 import nl.dionsegijn.konfetti.KonfettiView;
 import nl.dionsegijn.konfetti.models.Shape;
 import nl.dionsegijn.konfetti.models.Size;
+import okhttp3.Call;
 
 public class AboutActivity extends BaseActivity {
 
@@ -43,6 +48,12 @@ public class AboutActivity extends BaseActivity {
             getWindow().setReenterTransition(transition);
         }
         super.onCreate(savedInstanceState);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        OkHttpUtils.getInstance().cancelTag(this);
     }
 
     @Override
@@ -68,7 +79,11 @@ public class AboutActivity extends BaseActivity {
         mTopBar.setTitle("关于");
         mTopBar.addLeftBackImageButton().setOnClickListener(v -> finish());
 
-        Element versionElement = new Element().setTitle("Version 1.0");
+        //  点击版本时查询当前版本是否是最新版
+        Element versionElement = new Element().setTitle("Version 1.0").setOnClickListener(view -> {
+            checkAppVersion();
+        });
+
         //  彩蛋，点击三下触发
         Element authorElement = new Element().setTitle("Author JOJO").setOnClickListener(view -> {
             if (clickTimes < 2) {
@@ -93,7 +108,7 @@ public class AboutActivity extends BaseActivity {
         });
         View aboutPage = new AboutPage(this)
                 .isRTL(false)
-                .setDescription("油池助手")
+                .setDescription("乳化液检测助手")
                 .setImage(R.drawable.ic_launcher_she)
                 .addItem(versionElement)
                 .addItem(authorElement)
@@ -152,5 +167,19 @@ public class AboutActivity extends BaseActivity {
 
         });
         return e;
+    }
+
+    private void checkAppVersion() {
+        OilPoolApi.getInstance(this).checkAppVersion(this, new StringCallback() {
+            @Override
+            public void onError(Call call, Exception e, int id) {
+                Log.d("testeee", "onResponse: "+e);
+            }
+
+            @Override
+            public void onResponse(String response, int id) {
+                Log.d("testeee", "onResponse: "+response);
+            }
+        });
     }
 }

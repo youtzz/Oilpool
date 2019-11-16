@@ -36,7 +36,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.shichuangnet.jojo.oilpool.R;
 import org.shichuangnet.jojo.oilpool.api.OilPoolApi;
-import org.shichuangnet.jojo.oilpool.beans.OverViewBean;
 import org.shichuangnet.jojo.oilpool.utils.DateUtils;
 
 
@@ -46,7 +45,6 @@ import java.util.List;
 import okhttp3.Call;
 
 public class OverViewFragment extends Fragment {
-    private OverViewBean overViewBean;
 
     private Context mContext;
 
@@ -73,7 +71,6 @@ public class OverViewFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        overViewBean = new OverViewBean();
     }
 
     @Override
@@ -231,7 +228,7 @@ public class OverViewFragment extends Fragment {
      * */
     private void dataRefresh() {
 
-        OilPoolApi.getInstance(mContext).getPagingAutoData(this, 0, 15, new StringCallback() {
+        OilPoolApi.getInstance(mContext).getPagingAutoData(this, 0, 10, new StringCallback() {
             @Override
             public void onError(Call call, Exception e, int id) {
                 //  todo  to do something when get data error .....
@@ -250,7 +247,8 @@ public class OverViewFragment extends Fragment {
                             //  清空图表数据列表
                             clearList();
 
-                            for (int i = 0; i < jsonArray.length(); i++) {
+                            //  图表X轴 新数据->旧数据 从左往右
+                            /*for (int i = 0; i < jsonArray.length(); i++) {
                                 JSONObject obj = jsonArray.getJSONObject(i);
                                 //  设置数据底部的标题
                                 String date = DateUtils.getDate2String(obj.getLong("createTime"), "HH:mm");
@@ -263,6 +261,25 @@ public class OverViewFragment extends Fragment {
 
                                 tmpBarEntries.add(new BarEntry(i, tmp));
                                 phBarEntries.add(new BarEntry(i, ph));
+                                Log.d(TAG, "onResponse: 正确次数 "+ i);
+                            }*/
+
+                            //  图表X轴 旧数据->新数据 从左往右
+                            for (int i = jsonArray.length()-1; i >= 0; i--) {
+                                JSONObject obj = jsonArray.getJSONObject(i);
+                                //  设置数据底部的标题
+                                String date = DateUtils.getDate2String(obj.getLong("createTime"), "HH:mm");
+                                title.add(date);
+                                //  设置数据项
+                                float tmp = Float.parseFloat(obj.getString("temperature"));
+                                float ph = Float.parseFloat(obj.getString("ph"));
+
+                                //  在这个循环中，i从大到小变化，但是Entries中的数据仍需从小到大排列，否则会出现index无法对齐的bug
+                                tmpEntries.add(new Entry(jsonArray.length()-i-1, tmp));
+                                phEntries.add(new Entry(jsonArray.length()-i-1, ph));
+
+                                tmpBarEntries.add(new BarEntry(jsonArray.length()-i-1, tmp));
+                                phBarEntries.add(new BarEntry(jsonArray.length()-i-1, ph));
                             }
 
                             //  折线图
@@ -286,9 +303,10 @@ public class OverViewFragment extends Fragment {
                             BarDataSet tmpBarDataSet = new BarDataSet(tmpBarEntries, "温度");
                             BarDataSet phBarDataSet = new BarDataSet(phBarEntries, "ph");
 
-                            tmpBarDataSet.setColors(ColorTemplate.VORDIPLOM_COLORS);
+                            //  采用这个库默认的蓝色
+                            //  tmpBarDataSet.setColors(Color.parseColor("#03a9f4"));
                             tmpBarDataSet.setHighLightAlpha(10);
-                            phBarDataSet.setColors(ColorTemplate.VORDIPLOM_COLORS);
+                            phBarDataSet.setColors(ColorTemplate.VORDIPLOM_COLORS[0]);
                             phBarDataSet.setHighLightAlpha(10);
 
                             BarData tmpBarData = new BarData(tmpBarDataSet);

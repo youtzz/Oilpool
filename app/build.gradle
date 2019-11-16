@@ -53,6 +53,8 @@ dependencies {
     implementation 'com.qmuiteam:qmui:1.4.0'
     //  smartRefresh 下拉刷新、上拉加载库，原库过大，只导入部分
     implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0'
+    implementation 'com.scwang.smartrefresh:SmartRefreshHeader:1.1.0'
+
     //  浮动按钮
     implementation 'com.github.clans:fab:1.6.4'
     //  封装了一些常用功能的 recyclerView adapter

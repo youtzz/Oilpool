@@ -62,9 +62,9 @@ public class MainActivity extends BaseActivity {
     /** 底部导航栏中间突起的按钮 */
     private ImageButton mAddDateIb;
     /** 第二个文字区域被凸起按钮覆盖 */
-    private String[] mTabTitles = {"自动数据", "", "人工数据"};
+    private String[] mTabTitles = {"在线数据", "", "人工数据"};
     /** 顶部标题栏的文字 */
-    private String[] mTopBarTitles = {"自动数据", "人工数据", "人工数据"};
+    private String[] mTopBarTitles = {"在线数据", "人工数据", "人工数据"};
 
     private int[] mIconUnselectedIds = {
             R.mipmap.tab_home_unselect, R.mipmap.tab_empty,

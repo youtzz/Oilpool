@@ -188,4 +188,19 @@ public class OilPoolApi {
                 .build()
                 .execute(callback);
     }
+
+    /**
+     * 检查APP版本
+     * */
+    public void checkAppVersion(Object tag, StringCallback callback) {
+        paramsMap.clear();
+        paramsMap.put("api_token", "3dd881aa7f0197489e16a517ef49f1ca");  //api_token 在内测平台fir.im上
+        OkHttpUtils
+                .get()
+                .tag(tag)
+                .url("http://api.fir.im/apps/latest/5da9dc0823389f491f911815")  //尾号为appid，同样在内测平台fir.im上
+                .params(paramsMap)
+                .build()
+                .execute(callback);
+    }
 }

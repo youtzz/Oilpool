@@ -1,6 +1,7 @@
 <resources>
-    <string name="app_name">oilpool</string>
-    <string name="title_first_name">自动数据</string>
+    <string name="app_name">乳化液检测助手</string>
+    <string name="app_name_en">EMA</string>
+    <string name="title_first_name">在线数据</string>
     <string name="title_second_name">人工数据</string>
     <string name="title_third_name">我的</string>
 

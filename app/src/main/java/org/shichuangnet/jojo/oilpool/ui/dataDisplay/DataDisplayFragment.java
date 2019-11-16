@@ -35,10 +35,10 @@ import org.shichuangnet.jojo.oilpool.dataHandler.DataHandler;
 import org.shichuangnet.jojo.oilpool.ui.BaseActivity;
 import org.shichuangnet.jojo.oilpool.utils.DateUtils;
 import org.shichuangnet.jojo.oilpool.utils.ResponseUtils;
-import org.shichuangnet.jojo.oilpool.utils.StringUtils;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.Objects;
 
 import okhttp3.*;
@@ -66,7 +66,8 @@ public class DataDisplayFragment extends Fragment {
     private TextView mTodayUploadValueTv;
     private TextView mAllDataCountsValueTv;
 
-    private SmartRefreshLayout mRefreshLayout;
+    private SmartRefreshLayout mTopRefreshLayout;
+    private SmartRefreshLayout mBottomRefreshLayout;
 
     private RecyclerView mDataDisplayListRv;
     private DataDisplayRvAdapter mDataDisplayRvAdapter;
@@ -80,8 +81,8 @@ public class DataDisplayFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-//        return inflater.inflate(R.layout.fragment_data_display, container, false);
-        return inflater.inflate(R.layout.fragment_data_display_test_layout, container, false);
+//        return inflater.inflate(R.layout.fragment_data_display_layout, container, false);
+        return inflater.inflate(R.layout.fragment_data_display_layout_test, container, false);
     }
 
     @Override
@@ -89,7 +90,8 @@ public class DataDisplayFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         mDataDisplayContainerCv = view.findViewById(R.id.cv_container_data_display_data_list);
-        mRefreshLayout = view.findViewById(R.id.refresh_layout_data_display);
+        mTopRefreshLayout = view.findViewById(R.id.refresh_layout_data_display_top);
+        mBottomRefreshLayout = view.findViewById(R.id.refresh_layout_data_display);
         mDataDisplayListRv = view.findViewById(R.id.rv_data_display);
         mEmptyViewContainerCv = view.findViewById(R.id.cv_container_data_display_empty_view);
         mEmptyImageBtn = view.findViewById(R.id.ib_data_display_empty);
@@ -126,9 +128,15 @@ public class DataDisplayFragment extends Fragment {
             }
         });
 
+        mTopRefreshLayout.setEnableLoadMore(false);  //  下拉刷新禁用下拉加载
+        mBottomRefreshLayout.setEnableRefresh(false);  //  下拉加载禁用上拉刷新
+
+        mTopRefreshLayout.setHeaderTriggerRate(0.5f);
+        mBottomRefreshLayout.setFooterTriggerRate(0.5f);
+
         //  上拉刷新，加载当前列表最后一位数据时间到当前时间之间的数据，进行增量更新
         //  若列表数据为空，加载一页数据
-        mRefreshLayout.setOnRefreshListener(refreshLayout -> {
+        mTopRefreshLayout.setOnRefreshListener(mTopRefreshLayout -> {
 
             checkTodayUploadAndAllCounts();
 
@@ -138,18 +146,18 @@ public class DataDisplayFragment extends Fragment {
                 OilPoolApi.getInstance(mContext).getPagingDate(this, 0, 10, new StringCallback() {
                     @Override
                     public void onError(Call call, Exception e, int id) {
-                        refreshLayout.finishRefresh(2000, false, false);  //  false参数为失败
+                        mTopRefreshLayout.finishRefresh(2000, false, false);  //  false参数为失败
                     }
 
                     @Override
                     public void onResponse(String response, int id) {
                         //  解析response的code码，不为200说明访问失败
                         if (!ResponseUtils.checkResponse(response)) {
-                            refreshLayout.finishRefresh(2000, false, false);
+                            mTopRefreshLayout.finishRefresh(2000, false, false);
                         } else {
                             List<DataBean> list = DataHandler.handleDataBeans(response, 0);
                             DataDisplayDiffCallBack callBack = new DataDisplayDiffCallBack(list);
-                            refreshLayout.finishRefresh(2000, true, false);
+                            mTopRefreshLayout.finishRefresh(2000, true, false);
                             mDataDisplayRvAdapter.setNewDiffData(callBack);
                         }
                     }
@@ -161,17 +169,17 @@ public class DataDisplayFragment extends Fragment {
                 OilPoolApi.getInstance(mContext).getFilterDataByTime(this, lastTime, nowTime, new StringCallback() {
                     @Override
                     public void onError(Call call, Exception e, int id) {
-                        refreshLayout.finishRefresh(2000, false, false);
+                        mTopRefreshLayout.finishRefresh(2000, false, false);
                     }
 
                     @Override
                     public void onResponse(String response, int id) {
                         if (!ResponseUtils.checkResponse(response)) {
-                            refreshLayout.finishRefresh(2000, false, false);
+                            mTopRefreshLayout.finishRefresh(2000, false, false);
                         } else {
                             List<DataBean> list = DataHandler.handleDataBeans(response, 0);
                             DataDisplayDiffCallBack callBack = new DataDisplayDiffCallBack(list);
-                            refreshLayout.finishRefresh();
+                            mTopRefreshLayout.finishRefresh();
                             mDataDisplayRvAdapter.setNewDiffData(callBack);
                         }
                     }
@@ -180,7 +188,7 @@ public class DataDisplayFragment extends Fragment {
         });
 
         //  下拉加载
-        mRefreshLayout.setOnLoadMoreListener(refreshLayout -> {
+        mBottomRefreshLayout.setOnLoadMoreListener(refreshLayout -> {
 
             checkTodayUploadAndAllCounts();
 
@@ -250,7 +258,7 @@ public class DataDisplayFragment extends Fragment {
         if (mDataDisplayContainerCv.getVisibility() == View.VISIBLE) {
             //  一直自动刷新有点消耗客户端流量，体验也不不好
             //  建议使用服务器推送来实现实时刷新
-            //  mRefreshLayout.autoRefresh();
+            mTopRefreshLayout.autoRefresh();
         } else {
             dataFresh();
         }
@@ -337,7 +345,7 @@ public class DataDisplayFragment extends Fragment {
             }
         });
 
-        OilPoolApi.getInstance(mContext).getPagingDate(this, 0, 8, new StringCallback() {
+        OilPoolApi.getInstance(mContext).getPagingDate(this, 0, 1, new StringCallback() {
             @Override
             public void onError(Call call, Exception e, int id) { }
 
@@ -347,20 +355,7 @@ public class DataDisplayFragment extends Fragment {
                     JSONObject jsonObject = new JSONObject(response).optJSONObject("data");
                     if (jsonObject != null) {
                         if (jsonObject.has("totalElements")) {
-                            mAllDataCountsValueTv.setText(jsonObject.getString("totalElements"));
-                        }
-                        if (jsonObject.has("content")) {
-                            JSONArray jsonArray = jsonObject.getJSONArray("content");
-                            List<Float> cons = new ArrayList<>();
-                            List<Float> dens = new ArrayList<>();
-                            for (int i = 0; i < jsonArray.length(); i++) {
-                                JSONObject json = jsonArray.getJSONObject(i);
-                                //  为了确保服务器的到值是正确的，采用自己的方法进行number format
-                                float conductivity = StringUtils.getStr2Float(json.getString("conductivity"));
-                                float density = StringUtils.getStr2Float(json.getString("density"));
-                                cons.add(conductivity);
-                                dens.add(density);
-                            }
+                            mAllDataCountsValueTv.setText(getFormatNum(jsonObject.getString("totalElements")));
                         }
                     }
                 } catch (JSONException e) {
@@ -369,5 +364,30 @@ public class DataDisplayFragment extends Fragment {
             }
         });
 
+    }
+
+    private String getFormatNum(String size) {
+
+        long num = Long.valueOf(size);
+        long re = num;
+        char ch;
+
+        if(num >= 1024*1024*1024) {
+            num /= 1073741824L;
+            re %= 1073741824L;
+            ch = 'G';
+        } else if(num >= 1024*1024) {
+            num /= 1048576L;
+            re %= 1048576L;
+            ch = 'M';
+        } else if(num >= 1024){
+            num /= 1024;
+            re %= 1024;
+            ch = 'K';
+        } else {
+            return String.valueOf(num);
+        }
+
+        return String.format(Locale.getDefault(), "%d.%d%c", num, re, ch);
     }
 }

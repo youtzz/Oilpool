@@ -172,7 +172,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:textColor="@color/qmui_config_color_gray_7"
-                android:text="图表" />
+                android:text="温度" />
 
             <Button
                 android:layout_width="wrap_content"
